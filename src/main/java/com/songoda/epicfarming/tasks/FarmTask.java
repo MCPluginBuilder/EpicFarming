@@ -57,7 +57,11 @@ public class FarmTask extends BukkitRunnable {
                             Block b2 = block.getWorld().getBlockAt(bx + fx, by + fy, bz + fz);
                             Optional<XMaterial> mat = CompatibleMaterial.getMaterial(b2.getType());
 
-                            if (!mat.isPresent() || !XBlock.isCrop(mat.get())) {
+                            if (!mat.isPresent() || (!XBlock.isCrop(mat.get()) && mat.get() != XMaterial.SWEET_BERRY_BUSH)) {
+                                continue;
+                            }
+
+                            if (mat.isPresent() && mat.get() == XMaterial.SWEET_BERRY_BUSH) {
                                 continue;
                             }
 
