@@ -61,10 +61,6 @@ public class FarmTask extends BukkitRunnable {
                                 continue;
                             }
 
-                            if (mat.isPresent() && mat.get() == XMaterial.SWEET_BERRY_BUSH) {
-                                continue;
-                            }
-
                             if (add) {
                                 farm.addCachedCrop(b2);
                                 continue;
