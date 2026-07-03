@@ -13,6 +13,7 @@ import com.songoda.third_party.com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -55,6 +56,8 @@ public class FarmTask extends BukkitRunnable {
                     for (int fy = -2; fy <= 1; fy++) {
                         for (int fz = -radius; fz <= radius; fz++) {
                             Block b2 = block.getWorld().getBlockAt(bx + fx, by + fy, bz + fz);
+                            if (!(b2 instanceof Ageable)) continue;
+
                             Optional<XMaterial> mat = CompatibleMaterial.getMaterial(b2.getType());
 
                             if (!mat.isPresent() || (!XBlock.isCrop(mat.get()) && mat.get() != XMaterial.SWEET_BERRY_BUSH)) {
